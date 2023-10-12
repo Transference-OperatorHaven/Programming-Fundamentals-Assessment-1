@@ -58,5 +58,4 @@ void main()
     cout << "\n                                                                           $$$$$$/                                                                                                    ";
     cout << "\n\n A game about space, trucks and space trucks";
     cout << "\n\n";
-    cout << "heart eyes";
 }
