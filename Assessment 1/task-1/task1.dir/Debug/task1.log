@@ -1,3 +1,4 @@
 ﻿  main.cpp
 .\main.cpp(40,13): warning C4129: '#': unrecognized character escape sequence
-  task1.vcxproj -> C:\Users\s019465n\Documents\Programming-Fundamentals-Assessment-1\Assessment 1\task-1\Debug\Task1.exe
+  LINK : .\Debug\Task1.exe not found or not built by the last incremental link; performing full link
+  task1.vcxproj -> C:\Users\s019465n\Documents\GitHub\Programming-Fundamentals-Assessment-1\Assessment 1\task-1\Debug\Task1.exe
