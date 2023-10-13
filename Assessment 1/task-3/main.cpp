@@ -14,7 +14,6 @@ void main()
     // > 5 squared is 25.
     cout << "provide a number to square: ";
     cin >> number;
-
     while(!cin) // if the input is invalid
     {
         cout << "please input a numeric value this time: ";
@@ -23,6 +22,4 @@ void main()
         cin >> number;
     }
     if (cin) { squaredNumber = number * number; cout << "\n\n" << number << " squared is " << squaredNumber << "\n"; }
-
-
 }
