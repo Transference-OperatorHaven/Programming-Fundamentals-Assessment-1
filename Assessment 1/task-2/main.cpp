@@ -2,11 +2,15 @@
 #include <string>
 
 using namespace std;
+
 string name;
 string username;
 string clantag;
 int age;
 bool correctUsername = false;
+bool clantagValid = true;
+bool clantagFlag = false;
+bool ageValid = false;
 string confirmation;
 
 
@@ -30,50 +34,69 @@ void main()
 
     cout << "Hello! what's your name? ";
     getline(cin, name);
-
-    for (size_t i = 0; i < name.length(); i++)
+    for (int i = 0; i <= name.length(); i++)
     {
-        if (name[i] == 0 || name[i - 1] == ' ') 
-        {
-            name[i] = toupper(name[i]);
-        }
-
-        else
-        {
-            name[i] = tolower(name[i]);
-        }
-    }
+        name[i] = i == 0 || name[i - 1] == ' ' ? toupper(name[i]) : tolower(name[i]);
+    } //capitlising the first character and any character proceeding a space and lowercasing everything else
 
 
-    cout << "\nwhat a nice name! " << name << ", what's your username? ";
+    cout << "what a nice name! " << name << ", what's your username? ";
 
     //correct username checker
-    while (correctUsername = true)
+    while (correctUsername != true)
     {
         getline(cin, username);
-        cout << "\n" << name << ", that's a really good username but is " << username << " correct? (yes or no) ";
-        cin >> confirmation;
-        for (auto& c : confirmation){c = tolower(c);}
+
+        cout << "\n\n" << name << ", that's a really good username but is " << username << " correct? (yes or no) ";
+        getline(cin, confirmation);
+        for (auto& c : confirmation) { c = tolower(c); }
         if (confirmation == "yea" || confirmation == "yes" || confirmation == "yeah" || confirmation == "yeag" || confirmation == "")
         {
             correctUsername = true;
-            break;
         }
-        else 
+        else
         {
-            cout << "\nthat's a shame, what is your correct username? "; 
+            cout << "that's a shame, what is your correct username? ";
         }
 
     }
 
-    cout << "\nnow, " << name << " enter the clantag that will go with your username (" << username << "). You are allowed up to 4 characters: ";
-    cin >> clantag;
-    clantag.resize(4);
-    for (size_t i = 0; i < clantag.length(); i++) clantag [i] = toupper(clantag[i]);
-    cout << "\n your clantag is: " << clantag;
+    cout << "\n\nnow, " << name << ", enter the clantag that will go with your username (" << username << "). You are allowed up to 4 characters and spaces are not valid characters: ";
+    while (clantagValid == true)
+    {
+        getline(cin, clantag);
+        clantag.resize(4);
+        clantagFlag = false; //resetting flag for proceeding attempts
+        for (int i = 0; i < clantag.length(); i++) {if (clantag[i] == ' '){clantagFlag = true;}}
+        if (clantagFlag == true){cout << "your clantag is invalid please reinput it: ";}
+        else {clantagValid = true; break;}
+    }
+    for (size_t i = 0; i < clantag.length(); i++) clantag[i] = toupper(clantag[i]); //uppercasing all four characters of the clantag
+    cout << "\nyour clantag is: " << clantag;
 
-    cout << "\n" << name << ", your username is " << username << ", and your clantag is " << clantag << ". making the visible username: [" << clantag << "]" << username;
+    cout << "\n\n" << name << ", your username is " << username << ", and your clantag is " << clantag << ". making the visible username: [" << clantag << "]" << username;
+    cout << "\nplease now input an age: ";
+    while (ageValid == false)
+    {
+        cin >> age;
+        if (!cin) // if the input is invalid
+        {
+            cout << "please input numeric values this time: ";
+            cin.clear(); //resets the failure bit
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //flushes out bad characters
+        }
+        else if(cin){ageValid == true; break;}
+    }
+
+    cout << "\n\nyour stats are as follows:";
+    cout << "\n - Name: " << name;
+    cout << "\n - Username: " << username;
+    cout << "\n - clantag: " << clantag;
+    cout << "\n - Combined clantag and username: [" << clantag << "]" << username;
+    cout << "\n - Age: " << age;
 
 
-    
+
+
+
 }
