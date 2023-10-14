@@ -1,6 +1,12 @@
 #include "main.h"
+#include <cstdlib>
+#include <stdio.h>
 
 using namespace std;
+int userNumber;
+int randNumber;
+bool numberGuessing = true;
+int guessCount;
 
 void main()
 {
@@ -34,6 +40,62 @@ void main()
     //At the end of the program, it should also display the number of guesses
     //the player needed to guess the value in.     
 
-    cout << "Here is a random number between 1 and 10: " << random(1, 10) << endl;
-    cout << "And here is one between -3 and -5: " << random(-3, -5) << endl;
+    randNumber = random(0, 100);
+    while (numberGuessing)
+    {
+        cout << "\n\nplease guess a number between 0 and 100: ";
+        cin >> userNumber;
+        guessCount++;
+        while (!cin) // if the input is invalid
+        {
+            cout << "please input a numeric value this time: ";
+            cin.clear(); //resets the failure bit
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //flushes out bad characters
+            cin >> userNumber;
+            guessCount++;
+        }
+        int diff = abs(randNumber - userNumber);
+        if (diff == 0) {
+            cout << "\n\nwell done you guessed it right! You took " << guessCount << " guesses to get the right answer!";
+            numberGuessing = false;
+        }
+
+        else if (diff >= 1 && diff <= 2)
+        {
+            cout << "\nboiling";
+        }
+
+        else if (diff >= 3 && diff <= 5)
+        {
+            cout << "\hot";
+        }
+        else if (diff >= 6 && diff <= 10)
+        {
+            cout << "\nwarmer";
+        }
+        else if (diff >= 11 && diff <= 15)
+        {
+            cout << "\nwarm";
+        }
+        else if (diff >= 16 && diff <= 25)
+        {
+            cout << "\ncold";
+        }
+        else if (diff >= 26 && diff <= 35)
+        {
+            cout << "\ncolder";
+        }
+        else if (diff >= 36 && diff <= 50)
+        {
+            cout << "\nfreezing";
+        }
+        else if (diff > 50 && diff <= 100)
+        {
+            cout << "\nbelow freezing";
+        }
+        else
+        { 
+            cout << "\nthat number was not in the range of 0-100";
+        }
+    }
 }
