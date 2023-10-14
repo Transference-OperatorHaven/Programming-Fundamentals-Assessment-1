@@ -41,13 +41,13 @@ void main()
     // > view 0
     //
     // Inventory Slot 0 information:
-    // Name: Empty
+    // userInput: Empty
     //
     // > set 0 2
     // > view 0
     //
     // Inventory Slot 0 information:
-    // Name: Potion
+    // userInput: Potion
     //
     // > items
     // - 0: Empty

@@ -9,8 +9,8 @@ std::mt19937 randomGenerator(device());
 /// <summary>
 /// Returns a random integer between {min} and {max}
 /// </summary>
-/// <param name="min">The minimum value</param>
-/// <param name="max">The maximum value</param>
+/// <param userInput="min">The minimum value</param>
+/// <param userInput="max">The maximum value</param>
 /// <returns>A random integer</returns>
 int random(int min, int max)
 {

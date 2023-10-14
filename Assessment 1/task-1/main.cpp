@@ -2,7 +2,6 @@
 #include <Windows.h>
 #include <string>
 using namespace std;
-string name;
 void main()
 {
     //Add code here to print out an ASCII art game header
