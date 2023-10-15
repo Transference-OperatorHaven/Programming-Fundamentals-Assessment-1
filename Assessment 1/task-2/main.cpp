@@ -17,17 +17,17 @@ string confirmation;
 
 void main()
 {
-    //Add code to prompt the player for their userInput, and then
-    //greet them with that userInput. For example, 
+    //Add code to prompt the player for their name, and then
+    //greet them with that name. For example, 
     //
-    // Please enter your userInput: ben
+    // Please enter your name: ben
     // Hello ben!
     //
 
-    //Expand this so the player is asked for their userInput, clan tag,
+    //Expand this so the player is asked for their name, clan tag,
     //age and username. Print out these details like so:
     //
-    // - userInput: <userInput>
+    // - name: <name>
     // - username: [<clantag>]<username>
     // - Age: <age>
     //
@@ -40,7 +40,7 @@ void main()
     } //capitlising the first character and any character proceeding a space and lowercasing everything else
 
 
-    cout << "what a nice userInput! " << name << ", what's your username? ";
+    cout << "what a nice name! " << name << ", what's your username? ";
 
     //correct username checker
     while (correctUsername!= true)
@@ -89,7 +89,7 @@ void main()
     }
 
     cout << "\n\nyour stats are as follows:";
-    cout << "\n - userInput: " << name;
+    cout << "\n - name: " << name;
     cout << "\n - username: " << username;
     cout << "\n - clantag: " << clantag;
     cout << "\n - Combined clantag and username: [" << clantag << "]" << username;
