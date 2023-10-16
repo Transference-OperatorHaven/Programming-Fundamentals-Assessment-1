@@ -13,12 +13,9 @@ void main()
     //- https://patorjk.com/software/taag/
     //- https://www.asciiart.eu/
 
-    //colour codes https://www.geeksforgeeks.org/how-to-print-colored-text-in-c/
-
-    system("mode con COLS=700");
+    
     ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
-    SendMessage(GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x2000000);
-
+    //colour codes https://www.geeksforgeeks.org/how-to-print-colored-text-in-c/
     system("Color 0C");
     cout << "                .                                            .";
     cout << "\n     *   .                  .              .        .   *          .";
