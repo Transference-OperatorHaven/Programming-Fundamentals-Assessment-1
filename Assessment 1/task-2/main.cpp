@@ -50,7 +50,7 @@ void main()
         cout << "\n\n" << name << ", that's a really good username but is " << username << " correct? (yes or no) ";
         getline(cin, confirmation);
         for (auto& c : confirmation) { c = tolower(c); }
-        if (confirmation == "yea" || confirmation == "yes" || confirmation == "yeah" || confirmation == "yeag" || confirmation == "")
+        if (confirmation == "yea" || confirmation == "yes" || confirmation == "yeah" || confirmation == "yeag" || confirmation == "y" || confirmation == "ye")
         {
             correctUsername = true;
         }
