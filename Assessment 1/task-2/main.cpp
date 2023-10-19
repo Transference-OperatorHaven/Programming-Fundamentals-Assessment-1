@@ -94,9 +94,4 @@ void main()
     cout << "\n - clantag: " << clantag;
     cout << "\n - Combined clantag and username: [" << clantag << "]" << username;
     cout << "\n - Age: " << age;
-
-
-
-
-
 }
