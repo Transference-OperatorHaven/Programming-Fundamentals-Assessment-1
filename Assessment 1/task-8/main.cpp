@@ -1,7 +1,21 @@
 #include <iostream>
+#include <string>
+
+using namespace std;
+
+string item[28] = { " ", "Cat", "Dubstep", "Wires from a wireless device", "Abraham Lincoln", "A dirty trodden flyer for a 1992 beer festival with the corner torn off", "The socker lost in the dryer", "A human arm", "the moon", "An M1911", "A softly crying goblin", "The One Ring", "A silver hand", "A fighting lion", "Blue health potion", "Adblocker-blocker-blocker", "Yomi's hustle", "A system's down", "The Throngler", "Bee Dee Gee's Hee Bee Bee Gees", "Croydon, London Borough", "Steel pan drum", "Mugshot of an upset orange guy", "", "The Dictionary of Obscure Sorrows by John Koenig", "A can of milk", "Dr. Pepper's brother, Mr. Pepper", };
+struct item
+{
+    int id;
+    string name;
+};
 
 void main()
 {
+    for (int i = 0; i > sizeof(item) / sizeof(string); i++)
+    {
+
+    }
     //In this challenge, you should build an inventory system using a dynamically
     //allocated array of structs.
 
