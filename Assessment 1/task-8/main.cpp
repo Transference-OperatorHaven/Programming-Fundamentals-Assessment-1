@@ -1,12 +1,16 @@
 #include <iostream>
 #include <string>
-#define LENGTH(x) sizeof(x)/sizeof(x[0])
+#include <vector>
+#define NOMINMAX
+#include <windows.h>
+#include <sstream>
+
 using namespace std;
 
-string itemList[27] = { " ", "Cat", "Dubstep", "Wires from a wireless device", "Abraham Lincoln", "A dirty trodden flyer for a 1992 beer festival with the corner torn off", "The socker lost in the dryer", "A human arm", "the moon", "An M1911", "A softly crying goblin", "The One Ring", "A silver hand", "A fighting lion", "Blue health potion", "Adblocker-blocker-blocker", "Yomi's hustle", "A system's down", "The Throngler", "Bee Dee Gee's Hee Bee Bee Gees", "Croydon, London Borough", "Steel pan drum", "Mugshot of an upset orange guy", "A polite pigeon", "The Dictionary of Obscure Sorrows by John Koenig", "A can of milk", "Dr. Pepper's brother, Mr. Pepper", };
+string itemList[27] = { "Empty", "Cat", "Dubstep", "Wires from a wireless device", "Abraham Lincoln", "A dirty trodden flyer for a 1992 beer festival with the corner torn off", "The socker lost in the dryer", "A human arm", "the moon", "An M1911", "A softly crying goblin", "The One Ring", "A silver hand", "A fighting lion", "Blue health potion", "Adblocker-blocker-blocker", "Yomi's hustle", "A system's down", "The Throngler", "Bee Dee Gee's Hee Bee Bee Gees", "Croydon, London Borough", "Steel pan drum", "Mugshot of an upset orange guy", "A polite pigeon", "The Dictionary of Obscure Sorrows by John Koenig", "A can of milk", "Dr. Pepper's brother, Mr. Pepper", };
 struct Inventory
 {
-    Inventory(string n = " ")
+    Inventory(string n = "Empty")
     {
         slot = n;
     }
@@ -16,44 +20,82 @@ struct Inventory
 
 void Items();
 void ShowAll();
+void Help();
+void View(int x);
 
 
 Inventory* structPointer;
 int sizeOfArray;
 bool bExit = false;
+bool cinFail = true;
 string userInput, parameter1,parameter2;
+int num1, num2;
 
 
 void main()
 {
 
     cout << "\nEnter the amount of inventory slots you wish to have: ";
-    cin >> sizeOfArray;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');  //flushes out bad characters
+    while (cinFail)
+    {
+        cin >> sizeOfArray;
+        if (!cin)
+        {
+            cin.clear(); //resets the failure bit
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\nplease input a correct numeric values this time: ";
+            continue;
+        }
+        else
+        {
+            cinFail = false;
+        }
+    }
     structPointer = new Inventory[sizeOfArray];
+    char split_char = ' ';
+    string each;
 
     while (!bExit)
     {
         cout << "\n\n>";
-        cin >> userInput;
-
-        if (userInput == "items")
+        getline(cin,userInput);
+        cout << "\n" << userInput;
+        istringstream ss(userInput);
+        istream_iterator<string> begin(ss);
+        istream_iterator<string> end;
+        vector<string> splitInput(begin, end);
+        if (splitInput[0] == "items")
         {
             Items();
         }
 
-        else if (userInput == "exit")
+        else if (splitInput[0] == "exit")
         {
             bExit = true;
         }
         
-        else if (userInput == "view_all")
+        else if (splitInput[0] == "show_all")
         {
             ShowAll();
+        }
+        else if (splitInput[0] == "help")
+        {
+            Help();
+        }
+        else if (splitInput[0] == "view")
+        {
+            //num1 = stoi(splitInput[1]);
+            cout << "\n" << splitInput[1];
+        }
+
+        else
+        {
+            cout << "\nunknown command try again.";
         }
     }
 
     delete[] structPointer;
+
 
     /*In this challenge, you should build an inventory system using a dynamically
     allocated array of structs.
@@ -125,23 +167,32 @@ void main()
 
 void Items()
 {
-    for (int i = 0; i < LENGTH(itemList); i++)
+    for (int i = 0; i < sizeof(itemList)/sizeof(string); i++)
     {
-        if (i == 0) 
-        {
-            continue;
-        }
-        else 
-        {
-            cout << "\n" << i << " - " << itemList[i];
-        }
+        cout << "\n" << i << " - " << itemList[i];
     }
+    cout << "\n\n";
+    system("PAUSE");
 }
 
 void ShowAll()
 {
-    for (int i = 0; i < LENGTH(&structPointer); i++)
+    for (int i = 0; i < sizeOfArray; i++)
     {
-        cout << i << " - " << &structPointer[i];
+        cout << "\nSlot " << i << " - " << (structPointer[i]).slot;
     }
+    cout << "\n\n";
+    system("PAUSE");
+}
+
+void Help()
+{
+    cout << "\nthe list of valid commands are: items, view (slot number), show_all, set (slot number) (item number), exit";
+    cout << "\n\n";
+    system("PAUSE");
+}
+
+void View(int x)
+{
+    cout << "\nIn slot " << x << "is" << (structPointer[x]).slot;
 }
