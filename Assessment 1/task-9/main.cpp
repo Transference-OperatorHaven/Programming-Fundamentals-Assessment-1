@@ -1,4 +1,7 @@
 #include <iostream>
+#include "main.h"
+Vector2 v1, v2;
+using namespace std;
 
 void main()
 {
@@ -19,14 +22,20 @@ void main()
 
     for(int i = 0; i < 2; i++)
     {
-        std::cout << "Please enter the X component of vector " << (i + 1) << ": ";
-        std::cin >> xComponents[i];
+        cout << "Please enter the X component of vector " << (i + 1) << ": ";
+        cin >> xComponents[i];
 
-        std::cout << "Please enter the Y component of vector " << (i + 1) << ": ";
-        std::cin >> yComponents[i];
+        cout << "Please enter the Y component of vector " << (i + 1) << ": ";
+        cin >> yComponents[i];
 
-        std::cout << std::endl;
+        cout << endl;
     }
+    v1.x = xComponents[0];
+    v1.y = yComponents[0];
+    v2.x = xComponents[1];
+    v2.y = yComponents[1];
+
+    cout << "\n\n" << GetDistanceBetweenPoints(v1, v2);
 
     //You should then build two Vector2s from the given x and y components, and show
     //the calculated distance between each point.
