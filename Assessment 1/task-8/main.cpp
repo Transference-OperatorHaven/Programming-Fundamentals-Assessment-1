@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <sstream>
 
+
 using namespace std;
 
 string itemList[27] = { "Empty", "Cat", "Dubstep", "Wires from a wireless device", "Abraham Lincoln", "A dirty trodden flyer for a 1992 beer festival with the corner torn off", "The socker lost in the dryer", "A human arm", "the moon", "An M1911", "A softly crying goblin", "The One Ring", "A silver hand", "A fighting lion", "Blue health potion", "Adblocker-blocker-blocker", "Yomi's hustle", "A system's down", "The Throngler", "Bee Dee Gee's Hee Bee Bee Gees", "Croydon, London Borough", "Steel pan drum", "Mugshot of an upset orange guy", "A polite pigeon", "The Dictionary of Obscure Sorrows by John Koenig", "A can of milk", "Dr. Pepper's brother, Mr. Pepper", };
@@ -22,23 +23,24 @@ void Items();
 void ShowAll();
 void Help();
 void View(int x);
-
+void Set(int x, int y);
 
 Inventory* structPointer;
 int sizeOfArray;
-bool bExit = false;
+bool bExit = false, bLoop = false;
 bool cinFail = true;
-string userInput, parameter1,parameter2;
-int num1, num2;
+string userInput;
+int vector_i, num1, num2;
+vector<string> splitInput;
 
 
 void main()
 {
-
     cout << "\nEnter the amount of inventory slots you wish to have: ";
     while (cinFail)
     {
         cin >> sizeOfArray;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         if (!cin)
         {
             cin.clear(); //resets the failure bit
@@ -52,46 +54,65 @@ void main()
         }
     }
     structPointer = new Inventory[sizeOfArray];
-    char split_char = ' ';
-    string each;
+
+    char dl = ' ';
 
     while (!bExit)
     {
         cout << "\n\n>";
         getline(cin,userInput);
-        cout << "\n" << userInput;
-        istringstream ss(userInput);
-        istream_iterator<string> begin(ss);
-        istream_iterator<string> end;
-        vector<string> splitInput(begin, end);
-        if (splitInput[0] == "items")
+        splitInput.push_back(string());
+        for (int i = 0; i < userInput.length(); i++)
         {
-            Items();
+            if (userInput[i] != ' ')
+            {
+                splitInput[vector_i].push_back(userInput[i]);
+            }
+            else
+            {
+                vector_i++;
+                splitInput.push_back(string());
+            }
         }
-
-        else if (splitInput[0] == "exit")
+        if (splitInput[0] == "exit")
         {
             bExit = true;
         }
-        
+        else if (splitInput[0] == "view")
+        {
+            num1 = stoi(splitInput[1]);
+            num1--;
+            View(num1);
+        }
+        else if (splitInput[0] == "set")
+        {
+            num1 = stoi(splitInput[1]);
+            num1--;
+            num2 = stoi(splitInput[2]);
+            Set(num1, num2);
+        }
         else if (splitInput[0] == "show_all")
         {
             ShowAll();
+        }
+        else if (splitInput[0] == "items")
+        {
+            Items();
         }
         else if (splitInput[0] == "help")
         {
             Help();
         }
-        else if (splitInput[0] == "view")
-        {
-            //num1 = stoi(splitInput[1]);
-            cout << "\n" << splitInput[1];
-        }
-
         else
         {
-            cout << "\nunknown command try again.";
+            cout << "not a recognised command. Use \"help\" to see valid commands." << endl;
         }
+
+
+
+        splitInput.clear();
+        userInput.clear();
+        vector_i = 0;
     }
 
     delete[] structPointer;
@@ -169,7 +190,7 @@ void Items()
 {
     for (int i = 0; i < sizeof(itemList)/sizeof(string); i++)
     {
-        cout << "\n" << i << " - " << itemList[i];
+        cout << "\n" << i+1 << " - " << itemList[i];
     }
     cout << "\n\n";
     system("PAUSE");
@@ -179,7 +200,7 @@ void ShowAll()
 {
     for (int i = 0; i < sizeOfArray; i++)
     {
-        cout << "\nSlot " << i << " - " << (structPointer[i]).slot;
+        cout << "\nSlot " << i+1 << " - " << (structPointer[i]).slot;
     }
     cout << "\n\n";
     system("PAUSE");
@@ -194,5 +215,11 @@ void Help()
 
 void View(int x)
 {
-    cout << "\nIn slot " << x << "is" << (structPointer[x]).slot;
+    cout << "\nSlot " << x+1 << " is " << (structPointer[x]).slot;
+}
+
+void Set(int x, int y)
+{
+    cout << "\nAssigning Slot " << x+1 << " to hold " << itemList[y];
+    (structPointer[x].slot) = itemList[y];
 }
