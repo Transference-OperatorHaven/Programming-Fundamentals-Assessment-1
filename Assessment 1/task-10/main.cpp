@@ -1,4 +1,16 @@
 #include <iostream>
+#include <vector>
+
+using namespace std;
+
+struct Assessment
+{
+    vector<int> grades;
+    vector<double> gradePercentage;
+};
+
+Assessment* pAssessmentPointer1;
+Assessment* pAssessmentPointer2;
 
 void main()
 {
@@ -18,4 +30,10 @@ void main()
     //Furthermore, please use structs and arrays where appropriate to model
     //the different assessment components.
     //..
+    pAssessmentPointer1 = new Assessment;
+    (pAssessmentPointer1)->gradePercentage.push_back(0.7);
+    (pAssessmentPointer1)->gradePercentage.push_back(0.3);
+    cout << (pAssessmentPointer1)->gradePercentage[0] << "\n" << (pAssessmentPointer1)->gradePercentage[1];
+
+
 }
