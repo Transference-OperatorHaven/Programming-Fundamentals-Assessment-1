@@ -75,11 +75,11 @@ void main()
 
     cout << "\nYour input in Sentence casing: " << userInput;
 
-    for (size_t i = 0; i < userInput.length(); i++) userInput[i] = toupper(userInput[i]);
+    for (int i = 0; i < userInput.length(); i++) userInput[i] = toupper(userInput[i]);
     
     cout << "\nYour input in upper casing: " << userInput;
 
-    for (size_t i = 0; i < userInput.length(); i++) userInput[i] = tolower(userInput[i]);
+    for (int i = 0; i < userInput.length(); i++) userInput[i] = tolower(userInput[i]);
 
     cout << "\nYour input in lower casing: " << userInput;
 

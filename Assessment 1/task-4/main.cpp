@@ -80,6 +80,7 @@ void main()
     inputLine += input;
     inputLine.insert((horizontalPadding + input.length() + 1), horizontalPadding, ' ');
     inputLine += '*';
+    //userinput line
 
     cout << "\n" << fullLine;
     for (int i = 0; i <= verticalPadding; i++)
