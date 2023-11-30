@@ -79,7 +79,38 @@ void main()
 
     for (int i = 0; i < (pAssessmentPointer1)->grades.size(); i++)
     {
+        if ((pAssessmentPointer1->grades[i]) < 40)
+        {
+            cout << "For criterion " << i << " you have failed\n";
+        }
+        if ( (pAssessmentPointer1->grades[i]) >= 40)
+        {
+            if ((pAssessmentPointer1->grades[i]) >= 50)
+            {
+                if ((pAssessmentPointer1->grades[i]) >= 60)
+                {
+                    if ((pAssessmentPointer1->grades[i]) >= 70)
+                    {
+                        cout << "For criterion " << i+1 << " you got a first.\n";
+                    }
+                    else
+                    {
+                        cout << "For criterion " << i+1 << " you got a 2:1.\n";
+                    }
+                }
+                else 
+                {
+                    cout << "For criterion " << i+1 << " you got a 2:2.\n";
+                }
+            }
+            else
+            {
+                cout << "For criterion " << i+1 << " you got a pass.\n";
+            }
+        }
+        
         (pAssessmentPointer1->finalGrade).push_back((pAssessmentPointer1)->grades[i] * (pAssessmentPointer1)->gradePercentage[i]);
+        
     }
     for (int i = 0; i < (pAssessmentPointer1)->finalGrade.size(); i++)
     {
@@ -88,6 +119,7 @@ void main()
 
     cout << "\n\nYour final grade for assessment 1 is: " << finalizedGrade << "\n\n";
     system("PAUSE");
+    delete pAssessmentPointer1;
 
     finalizedGrade = 0;
     pAssessmentPointer2 = new Assessment;
@@ -157,6 +189,36 @@ void main()
 
     for (int i = 0; i < (pAssessmentPointer2)->grades.size(); i++)
     {
+        if ((pAssessmentPointer2->grades[i]) < 40)
+        {
+            cout << "For criterion " << i << " you have failed\n";
+        }
+        if ((pAssessmentPointer2->grades[i]) >= 40)
+        {
+            if ((pAssessmentPointer2->grades[i]) >= 50)
+            {
+                if ((pAssessmentPointer2->grades[i]) >= 60)
+                {
+                    if ((pAssessmentPointer2->grades[i]) >= 70)
+                    {
+                        cout << "For criterion " << i + 1 << " you got a first.\n";
+                    }
+                    else
+                    {
+                        cout << "For criterion " << i + 1 << " you got a 2:1.\n";
+                    }
+                }
+                else
+                {
+                    cout << "For criterion " << i + 1 << " you got a 2:2.\n";
+                }
+            }
+            else
+            {
+                cout << "For criterion " << i + 1 << " you got a pass.\n";
+            }
+        }
+
         (pAssessmentPointer2->finalGrade).push_back((pAssessmentPointer2)->grades[i] * (pAssessmentPointer2)->gradePercentage[i]);
     }
     for (int i = 0; i < (pAssessmentPointer2)->finalGrade.size(); i++)
@@ -166,4 +228,5 @@ void main()
 
     cout << "Your final grade for assessment 2 is: " << finalizedGrade << "\n\n";
     system("PAUSE");
+    delete pAssessmentPointer2;
 }

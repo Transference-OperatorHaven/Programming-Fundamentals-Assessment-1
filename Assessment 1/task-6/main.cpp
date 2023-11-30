@@ -3,10 +3,8 @@
 #include <stdio.h>
 
 using namespace std;
-int userNumber;
-int randNumber;
+int userNumber, randNumber, guessCount;
 bool numberGuessing = true;
-int guessCount;
 
 void main()
 {

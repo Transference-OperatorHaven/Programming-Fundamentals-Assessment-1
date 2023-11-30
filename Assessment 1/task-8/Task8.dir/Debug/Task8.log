@@ -1,2 +1,3 @@
 ﻿  main.cpp
+.\main.cpp(86,22): warning C4553: '==': result of expression not used; did you intend '='?
   Task8.vcxproj -> C:\Users\foodm\Documents\GitHub\Programming-Fundamentals-Assessment-1\Assessment 1\task-8\Debug\Task8.exe

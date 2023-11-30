@@ -81,14 +81,26 @@ void main()
         else if (splitInput[0] == "view")
         {
             num1 = stoi(splitInput[1]);
+            if (num1 < 1 || num1 > sizeOfArray)
+            {
+                num1 == 1;
+            }
             num1--;
             View(num1);
         }
         else if (splitInput[0] == "set")
         {
             num1 = stoi(splitInput[1]);
+            if (num1 < 1 || num1 > sizeOfArray)
+            {
+                num1 = 1;
+            }
             num1--;
             num2 = stoi(splitInput[2]);
+            if (num2 < 1 || num2 > (sizeof(itemList)/sizeof(itemList[0])))
+            {
+                num2++;
+            }
             Set(num1, num2);
         }
         else if (splitInput[0] == "show_all")
